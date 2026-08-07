@@ -14,16 +14,7 @@ export const useHeroAnimation = (containerRef: RefObject<HTMLElement | null>) =>
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     if (prefersReducedMotion) return;
 
-    // Initialize Lenis for Smooth Scrolling
-    const lenis = new Lenis({
-      lerp: 0.08,
-      wheelMultiplier: 0.8,
-    });
-    lenis.on('scroll', ScrollTrigger.update);
-    gsap.ticker.add((time) => {
-      lenis.raf(time * 1000);
-    });
-    gsap.ticker.lagSmoothing(0);
+    // Lenis is now handled globally via SmoothScrollProvider
 
     // =========================================
     // 1. Master Entrance Timeline
@@ -157,7 +148,6 @@ export const useHeroAnimation = (containerRef: RefObject<HTMLElement | null>) =>
 
     return () => {
       window.removeEventListener('mousemove', handleMouseMove);
-      lenis.destroy();
     };
 
   }, { scope: containerRef });

@@ -46,9 +46,6 @@ export const HeroScene = () => {
       <div className="hero-metadata pointer-events-none absolute left-6 top-32 z-10 hidden font-mono text-[8px] tracking-[0.3em] text-neutral-600 md:block">
         35°40'59"N 139°44'06"E
       </div>
-      <div className="hero-metadata pointer-events-none absolute right-6 top-10 z-50 hidden font-mono text-[8px] tracking-[0.4em] text-neutral-600 lg:block">
-        CURRENT FILE
-      </div>
 
       <div className="relative z-10 mx-auto flex min-h-screen w-full max-w-[1400px] flex-col justify-between px-6 py-24 md:px-12 md:py-32 lg:py-40">
         

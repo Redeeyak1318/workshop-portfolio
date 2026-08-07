@@ -2,7 +2,7 @@ export const HeroPortrait = () => {
   return (
     <div className="relative">
       {/* Editorial framing - thin double border effect via outline + border */}
-      <div className="hero-portrait-outer relative p-5 border border-neutral-800/40 outline outline-1 outline-offset-4 outline-neutral-800/20 bg-[#050505]">
+      <div className="hero-portrait-outer relative p-5 border border-neutral-800/40 outline outline-1 outline-offset-4 outline-neutral-800/20 bg-[#050505] transition-all duration-500 hover:border-neutral-600/50 hover:outline-neutral-600/30">
         {/* Portrait container scaled up ~20% */}
         <div className="hero-portrait-inner relative aspect-[3/4] w-full min-w-[260px] max-w-[320px] shrink-0 bg-[#0a0a0a] md:max-w-[360px] lg:max-w-[430px]">
           
