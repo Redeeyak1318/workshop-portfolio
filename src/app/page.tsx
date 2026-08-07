@@ -1,7 +1,5 @@
+import { HeroScene } from '@/components/hero';
+
 export default function HomePage() {
-  return (
-    <main>
-      Foundation Ready
-    </main>
-  );
+  return <HeroScene />;
 }
