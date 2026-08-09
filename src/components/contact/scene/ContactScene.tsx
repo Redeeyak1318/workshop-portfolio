@@ -1,14 +1,13 @@
 'use client';
 
 import { useRef } from 'react';
-import { useResearchToContact } from '@/animations/editorial/useResearchToContact';
 import { GrainOverlay } from '@/components/editorial';
 
 export const ContactScene = () => {
   const sectionRef = useRef<HTMLElement>(null);
 
   // Attach the final dissolution transition
-  useResearchToContact(sectionRef);
+  // useResearchToContact(sectionRef);
 
   return (
     <section ref={sectionRef} id="contact" className="relative w-full min-h-screen bg-[#010101] text-neutral-200 py-48 z-40 flex flex-col justify-center items-center overflow-x-clip">

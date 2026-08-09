@@ -9,15 +9,15 @@ export const BuildModule = () => {
   ];
 
   return (
-    <BaseModule label="CURRENT BUILD" className="h-full">
-      <div className="flex flex-col gap-8">
+    <BaseModule variant="solid" padding="lg" label="CURRENT BUILD" className="h-full">
+      <div className="flex flex-col gap-5">
         {builds.map((build, idx) => (
-          <div key={idx} className="flex flex-col gap-4">
-            <span className="text-xl font-light tracking-widest text-neutral-200 uppercase">
+          <div key={idx} className="flex flex-col gap-3">
+            <span className="text-xs md:text-sm font-light tracking-[0.2em] text-neutral-300 uppercase">
               {build}
             </span>
             {idx !== builds.length - 1 && (
-              <div className="h-[1px] w-full max-w-[120px] bg-neutral-800/40"></div>
+              <div className="h-[1px] w-full bg-neutral-900/60"></div>
             )}
           </div>
         ))}

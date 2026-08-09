@@ -4,22 +4,25 @@ import { useRef } from 'react';
 import { ProjectsHeader } from '../header/ProjectsHeader';
 import { FeaturedProject } from '../featured/FeaturedProject';
 import { ProjectsArchive } from '../archive/ProjectsArchive';
-import { ProjectsMetadata } from '../metadata/ProjectsMetadata';
+import { ProjectDetailOverlay } from './ProjectDetailOverlay';
+import { ProjectData } from '../data/projectsData';
+import { useState } from 'react';
 import { GrainOverlay, BlueprintOverlay } from '@/components/editorial';
-import { useBlueprintTransition } from '@/animations/editorial/useBlueprintTransition';
 
 export const ProjectsScene = () => {
   const containerRef = useRef<HTMLElement>(null);
   
-  // Define strict refs for the Featured Project 
-  const featuredBgTextRef = useRef<HTMLDivElement>(null);
-  const featuredImageRef = useRef<HTMLDivElement>(null);
-  const featuredTitleRef = useRef<HTMLHeadingElement>(null);
-  const featuredPhilosophyRef = useRef<HTMLParagraphElement>(null);
-  const featuredMetadataRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const [activeProject, setActiveProject] = useState<ProjectData | null>(null);
+  const [isDetailOpen, setIsDetailOpen] = useState(false);
 
-  // Architectural blueprint transition
-  useBlueprintTransition(containerRef);
+  const handleOpenProject = (project: ProjectData) => {
+    setActiveProject(project);
+    setIsDetailOpen(true);
+  };
+
+  const handleCloseProject = () => {
+    setIsDetailOpen(false);
+  };
 
   return (
     <section ref={containerRef} id="projects" className="relative w-full overflow-hidden bg-[#050505] text-neutral-200 selection:bg-neutral-800 py-24 md:py-32 z-10 border-t border-neutral-900/50">
@@ -41,18 +44,17 @@ export const ProjectsScene = () => {
         
         <div className="flex flex-col gap-32 md:gap-48 ed-content">
           <div>
-            <FeaturedProject 
-              bgTextRef={featuredBgTextRef}
-              imageRef={featuredImageRef}
-              titleRef={featuredTitleRef}
-              philosophyRef={featuredPhilosophyRef}
-              metadataRefs={featuredMetadataRefs}
-            />
+            <FeaturedProject onOpenProject={handleOpenProject} />
           </div>
           
-          <ProjectsArchive />
+          <ProjectsArchive onOpenProject={handleOpenProject} />
         </div>
 
+        <ProjectDetailOverlay 
+          project={activeProject} 
+          isOpen={isDetailOpen} 
+          onClose={handleCloseProject} 
+        />
       </div>
     </section>
   );

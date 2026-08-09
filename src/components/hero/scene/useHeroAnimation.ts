@@ -17,7 +17,6 @@ export interface HeroAnimationRefs {
   portraitOuterRef: RefObject<HTMLDivElement | null>;
   portraitInnerRef: RefObject<HTMLDivElement | null>;
   portraitMarkRefs: MutableRefObject<(HTMLDivElement | null)[]>;
-  navRef: RefObject<HTMLDivElement | null>;
   marqueeRef: RefObject<HTMLDivElement | null>;
   marqueeTrackRef: RefObject<HTMLDivElement | null>;
   jpRefs: MutableRefObject<(HTMLDivElement | null)[]>;
@@ -37,7 +36,6 @@ export const useHeroAnimation = (refs: HeroAnimationRefs) => {
     portraitOuterRef,
     portraitInnerRef,
     portraitMarkRefs,
-    navRef,
     marqueeRef,
     marqueeTrackRef,
     jpRefs,
@@ -93,7 +91,7 @@ export const useHeroAnimation = (refs: HeroAnimationRefs) => {
       duration: 0.6,
       stagger: 0.05,
     }, 0.5)
-    .from([navRef.current, marqueeRef.current], {
+    .from([marqueeRef.current], {
       opacity: 0,
       y: -5,
       duration: 0.6,

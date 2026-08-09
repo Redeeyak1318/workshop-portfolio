@@ -6,9 +6,7 @@ import { HeroTypography } from '../typography/HeroTypography';
 import { HeroPortrait } from '../portrait/HeroPortrait';
 import { HeroMarquee } from '../marquee/HeroMarquee';
 import { HeroScrollCue } from '../scroll-cue/HeroScrollCue';
-import { Navigation } from '../../navigation/Navigation';
 import { useHeroAnimation } from './useHeroAnimation';
-import { useHeroToAboutTransition } from './useHeroToAboutTransition';
 import { GrainOverlay, BlueprintOverlay } from '@/components/editorial';
 
 export const HeroScene = () => {
@@ -23,7 +21,6 @@ export const HeroScene = () => {
   const portraitOuterRef = useRef<HTMLDivElement>(null);
   const portraitInnerRef = useRef<HTMLDivElement>(null);
   const portraitMarkRefs = useRef<(HTMLDivElement | null)[]>([]);
-  const navRef = useRef<HTMLDivElement>(null);
   const marqueeRef = useRef<HTMLDivElement>(null);
   const marqueeTrackRef = useRef<HTMLDivElement>(null);
   const jpRefs = useRef<(HTMLDivElement | null)[]>([]);
@@ -41,15 +38,11 @@ export const HeroScene = () => {
     portraitOuterRef,
     portraitInnerRef,
     portraitMarkRefs,
-    navRef,
     marqueeRef,
     marqueeTrackRef,
     jpRefs,
     metadataRefs
   });
-
-  // Bind structural transition to About section
-  useHeroToAboutTransition(containerRef);
 
   const setGuidelineRef = (el: HTMLDivElement | null) => {
     if (el && !guidelinesRefs.current.includes(el)) guidelinesRefs.current.push(el);
@@ -65,10 +58,6 @@ export const HeroScene = () => {
 
   return (
     <main ref={containerRef} className="relative min-h-[100dvh] lg:h-[100dvh] w-full overflow-hidden bg-[#050505] text-neutral-200 selection:bg-neutral-800">
-      <div ref={navRef}>
-        <Navigation />
-      </div>
-      
       {/* Design System Overlays */}
       <div ref={overlaysRef}>
         <GrainOverlay opacity={0.03} />

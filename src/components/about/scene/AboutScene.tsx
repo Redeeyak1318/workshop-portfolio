@@ -1,16 +1,11 @@
 "use client";
-import { AboutHeader } from '../header/AboutHeader';
+
 import { AboutDashboard } from '../dashboard/AboutDashboard';
-import { useRef } from 'react';
-import { useAboutEntrance } from './useAboutEntrance';
 import { GrainOverlay, BlueprintOverlay } from '@/components/editorial';
 
 export const AboutScene = () => {
-  const containerRef = useRef<HTMLElement>(null);
-  useAboutEntrance(containerRef);
-
   return (
-    <section ref={containerRef} id="about" className="relative w-full overflow-hidden bg-[#050505] text-neutral-200 selection:bg-neutral-800 pb-32 md:pb-48 pt-16 md:pt-24 z-10">
+    <section id="about" className="relative w-full overflow-hidden bg-[#050505] text-neutral-200 selection:bg-neutral-800 pb-32 md:pb-48 pt-16 md:pt-24 z-10">
 
       {/* Drafting Lines - Extended down from Hero */}
       <div className="pointer-events-none absolute inset-0 z-0 mx-auto flex max-w-[1400px] justify-between px-6 md:px-12">
@@ -33,7 +28,7 @@ export const AboutScene = () => {
       <GrainOverlay opacity={0.03} />
 
       <div className="relative z-10 mx-auto w-full max-w-[1400px] px-6 md:px-12">
-        <AboutHeader />
+
         <AboutDashboard />
       </div>
     </section>

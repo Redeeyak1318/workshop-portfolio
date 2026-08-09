@@ -1,53 +1,13 @@
 'use client';
 
 import { useRef } from 'react';
-import { useResearchAssembly } from '@/animations/editorial/useResearchAssembly';
 import { GrainOverlay } from '@/components/editorial';
 
 export const ResearchScene = () => {
   const sectionRef = useRef<HTMLElement>(null);
 
-  // Attach the notebook assembly transition
-  useResearchAssembly(sectionRef);
-
   return (
     <section ref={sectionRef} id="research" className="relative w-full min-h-screen bg-[#020202] text-neutral-200 py-32 z-30 flex flex-col overflow-x-clip">
-
-      {/* Notebook Transition Layer (Phase 2) */}
-      {/* Acts as an irregular sheet covering the boundary. */}
-      <div className="notebook-layer absolute top-0 left-0 w-full h-[150vh] bg-[#030303] z-50 pointer-events-none origin-bottom">
-        <div
-          className="absolute inset-0 w-full h-full bg-[#030303]"
-          style={{
-            // Irregular, torn-paper-like edge using combined gradients
-            maskImage: 'radial-gradient(ellipse at 50% 10%, black 30%, transparent 70%), linear-gradient(to top, transparent 0%, black 15%, black 100%)',
-            WebkitMaskImage: 'radial-gradient(ellipse at 50% 10%, black 30%, transparent 70%), linear-gradient(to top, transparent 0%, black 15%, black 100%)',
-            WebkitMaskComposite: 'add',
-            maskComposite: 'add'
-          }}
-        >
-          <GrainOverlay opacity={0.06} />
-
-          {/* Phase 3 & 6: Mathematical Atmosphere (Decorative only) */}
-          <div className="absolute top-[10%] right-[10%] opacity-20 flex flex-col items-end gap-1 font-mono text-[8px] text-neutral-500 tracking-widest math-mark">
-            <span>ƒ(x,y) = ∫(∇·v)</span>
-            <div className="w-16 h-[1px] bg-neutral-600"></div>
-            <span>λ 0.998</span>
-          </div>
-
-          <div className="absolute top-[25%] left-[5%] opacity-20 math-mark">
-            <svg width="40" height="40" viewBox="0 0 40 40" stroke="currentColor" strokeWidth="0.5" fill="none">
-              <circle cx="20" cy="20" r="15" />
-              <line x1="20" y1="5" x2="20" y2="35" />
-              <line x1="5" y1="20" x2="35" y2="20" />
-            </svg>
-          </div>
-
-          <div className="absolute top-[35%] right-[20%] opacity-10 font-mono text-[6px] tracking-[0.5em] math-mark">
-            [SYS-VAR: 0x4F]
-          </div>
-        </div>
-      </div>
 
       {/* Main Content Container */}
       <div className="relative z-10 mx-auto w-full max-w-[1400px] px-6 md:px-12 flex flex-col gap-24 h-full flex-grow mt-32">
