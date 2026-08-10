@@ -1,9 +1,10 @@
 'use client';
 
 import Image from 'next/image';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { RESEARCH_DATA, ResearchData } from '../data/researchData';
 import { ResearchFruit } from './ResearchFruit';
+import { ResearchWind } from './ResearchWind';
 
 interface ResearchTreeProps {
   onOpenDetail: (data: ResearchData) => void;
@@ -11,6 +12,32 @@ interface ResearchTreeProps {
 
 export const ResearchTree = ({ onOpenDetail }: ResearchTreeProps) => {
   const [hoveredFruit, setHoveredFruit] = useState<string | null>(null);
+  const [breezeActive, setBreezeActive] = useState(false);
+
+  useEffect(() => {
+    // Respect prefers-reduced-motion
+    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      return;
+    }
+
+    let timeoutId: NodeJS.Timeout;
+
+    const triggerBreeze = () => {
+      setBreezeActive(true);
+      // Breeze event lasts 8s total
+      setTimeout(() => setBreezeActive(false), 8000);
+      
+      // Schedule next breeze with natural variability (12-22s)
+      const nextDelay = 12000 + Math.random() * 10000;
+      timeoutId = setTimeout(triggerBreeze, nextDelay);
+    };
+
+    // Organic initial start after hydration
+    const initialDelay = 4000 + Math.random() * 3000;
+    timeoutId = setTimeout(triggerBreeze, initialDelay);
+
+    return () => clearTimeout(timeoutId);
+  }, []);
 
   return (
     <div className="relative w-full aspect-[4/5] md:aspect-[16/9] overflow-hidden">
@@ -54,8 +81,11 @@ export const ResearchTree = ({ onOpenDetail }: ResearchTreeProps) => {
         />
       </div>
 
-      {/* Environmental Particle Overlay (Breeze effect) */}
-      <div className="absolute inset-0 z-10 pointer-events-none opacity-20 mix-blend-screen bg-[url('/images/textures/grain.png')] bg-repeat" style={{ animation: 'research-breeze 20s linear infinite' }}></div>
+      {/* Environmental Particle Overlay */}
+      <div className="absolute inset-0 z-10 pointer-events-none opacity-10 mix-blend-screen bg-[url('/images/textures/grain.png')] bg-repeat" style={{ animation: 'research-breeze 20s linear infinite' }}></div>
+
+      {/* Cinematic Visible Wind Sweep */}
+      <ResearchWind isActive={breezeActive} />
 
       {/* Interactive Fruit Overlay Layer */}
       <div className="absolute inset-0 z-20">
@@ -65,6 +95,7 @@ export const ResearchTree = ({ onOpenDetail }: ResearchTreeProps) => {
             data={fruit}
             isActive={hoveredFruit === fruit.id}
             isHovered={hoveredFruit !== null}
+            breezeActive={breezeActive}
             onHover={setHoveredFruit}
             onClick={onOpenDetail}
           />

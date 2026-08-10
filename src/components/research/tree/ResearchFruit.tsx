@@ -7,6 +7,7 @@ interface ResearchFruitProps {
   data: ResearchData;
   isActive: boolean;
   isHovered: boolean;
+  breezeActive: boolean;
   onHover: (id: string | null) => void;
   onClick: (data: ResearchData) => void;
 }
@@ -15,6 +16,7 @@ export const ResearchFruit = ({
   data,
   isActive,
   isHovered,
+  breezeActive,
   onHover,
   onClick
 }: ResearchFruitProps) => {
@@ -22,6 +24,10 @@ export const ResearchFruit = ({
   // If another fruit is active/hovered, this one becomes slightly subdued.
   // If NO fruit is active, it stays at 100%.
   const isSubdued = !isActive && isHovered;
+
+  // Calculate breeze propagation delay based on horizontal position (0 to 4s)
+  const leftPercent = parseFloat(data.pos.left) || 0;
+  const propDelay = (leftPercent / 100) * 4;
 
   return (
     <div
@@ -59,7 +65,7 @@ export const ResearchFruit = ({
             ? 'scale-110 drop-shadow-[0_0_30px_rgba(220,38,38,0.4)]' 
             : isSubdued 
               ? 'opacity-40 scale-95' 
-              : 'opacity-90 drop-shadow-[0_0_10px_rgba(220,38,38,0.2)] hover:drop-shadow-[0_0_20px_rgba(220,38,38,0.5)] hover:scale-[1.03]'
+              : 'opacity-90 drop-shadow-[0_0_10px_rgba(220,38,38,0.2)] group-hover/fruit:drop-shadow-[0_0_20px_rgba(220,38,38,0.5)] group-hover/fruit:scale-[1.03] group-focus-within/fruit:drop-shadow-[0_0_20px_rgba(220,38,38,0.5)] group-focus-within/fruit:scale-[1.03]'
           }`}
         style={{
           // Use the provided delays to offset the animation phases per fruit
@@ -68,8 +74,16 @@ export const ResearchFruit = ({
         }}
       >
 
-        {/* The Cinematic Apple Asset */}
-        <div className="relative w-7 h-7 md:w-9 md:h-9 pointer-events-none transition-transform duration-[800ms]">
+        {/* The Cinematic Apple Asset inside Breeze Layer */}
+        <div 
+          className={`relative w-7 h-7 md:w-9 md:h-9 pointer-events-none transition-transform duration-[800ms]
+            ${breezeActive ? 'animate-breeze-apple' : ''}
+            group-hover/fruit:!animate-none group-focus-within/fruit:!animate-none
+          `}
+          style={{
+            '--breeze-prop-delay': `${propDelay}s`
+          } as React.CSSProperties}
+        >
           <Image
             src="/images/research/apple-node.png"
             alt="Research Node"
