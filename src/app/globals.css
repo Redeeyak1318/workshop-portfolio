@@ -24,3 +24,9 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+@keyframes sway {
+  0% { transform: rotate(-2deg) translateY(0px); }
+  50% { transform: rotate(1deg) translateY(-2px); }
+  100% { transform: rotate(-1deg) translateY(1px); }
+}
