@@ -21,30 +21,7 @@ export const FeaturedProject = ({ onOpenProject }: FeaturedProjectProps) => {
             tabIndex={0}
             onClick={() => onOpenProject(project)}
             onKeyDown={(e) => e.key === 'Enter' && onOpenProject(project)}
-            className="
-              group/frame
-              relative md:absolute w-full max-w-[340px] lg:max-w-[380px] mx-auto md:mx-0
-              bg-[#0a0a0a] border border-neutral-800/80 p-3 lg:p-4 shadow-xl
-              cursor-pointer outline-none
-              transition-all duration-[600ms] ease-[cubic-bezier(0.19,1,0.22,1)]
-              
-              md:top-[var(--top)] md:left-[var(--left)]
-              md:[transform:scale(1)_rotate(var(--base-rotate))]
-              md:group-hover/archive:opacity-40
-              md:group-hover/archive:[transform:scale(0.96)_rotate(var(--base-rotate))]
-              md:group-hover/archive:z-0
-              md:hover:!opacity-100
-              md:hover:![transform:scale(1.06)_rotate(0deg)]
-              md:hover:!z-40
-              md:hover:!shadow-[0_40px_80px_rgba(0,0,0,0.9)]
-              md:hover:!border-neutral-600/60
-              md:hover:!bg-[#111]
-              
-              focus-visible:!opacity-100
-              focus-visible:![transform:scale(1.06)_rotate(0deg)]
-              focus-visible:!z-40
-              focus-visible:!border-neutral-500
-            "
+            className="group/frame relative md:absolute w-full max-w-[340px] lg:max-w-[380px] mx-auto md:mx-0 bg-[#0a0a0a] border border-neutral-800/80 p-3 lg:p-4 shadow-xl cursor-pointer outline-none transition-all duration-[600ms] ease-[cubic-bezier(0.19,1,0.22,1)] md:top-[var(--top)] md:left-[var(--left)] md:[transform:scale(1)_rotate(var(--base-rotate))] md:group-hover/archive:opacity-40 md:group-hover/archive:[transform:scale(0.96)_rotate(var(--base-rotate))] md:group-hover/archive:z-0 md:hover:!opacity-100 md:hover:![transform:scale(1.06)_rotate(0deg)] md:hover:!z-40 md:hover:!shadow-[0_40px_80px_rgba(0,0,0,0.9)] md:hover:!border-neutral-600/60 md:hover:!bg-[#111] focus-visible:!opacity-100 focus-visible:![transform:scale(1.06)_rotate(0deg)] focus-visible:!z-40 focus-visible:!border-neutral-500"
             style={{
               '--top': project.pos?.top,
               '--left': project.pos?.left,

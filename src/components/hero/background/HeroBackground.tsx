@@ -34,7 +34,7 @@ export const HeroBackground = ({ bgJpRef }: HeroBackgroundProps) => {
       </video>
 
       {/* Dark atmospheric overlay - ensures typography and portrait remain legible */}
-      <div className="absolute inset-0 z-10 bg-[#050505]/75" />
+      <div className="absolute inset-0 z-10 bg-[#050505]/25" />
 
       {/* Huge Outlined Japanese Text */}
       <div ref={bgJpRef} className="absolute top-[40%] left-1/2 -translate-x-1/2 -translate-y-1/2 flex w-full flex-col items-center justify-center pointer-events-none opacity-10 mix-blend-screen z-20">

@@ -114,8 +114,10 @@ export const HeroScene = () => {
           <div ref={setMetadataRef}>
             <HeroScrollCue />
           </div>
-          <div ref={setJpRef} className="hidden font-mono text-[8px] uppercase tracking-[0.4em] text-neutral-600 md:block" style={{ writingMode: 'vertical-rl' }}>
-            PROJECT CASE STUDY
+          <div className="flex items-end gap-10 z-20">
+            <div ref={setJpRef} className="hidden font-mono text-[8px] uppercase tracking-[0.4em] text-neutral-600 md:block" style={{ writingMode: 'vertical-rl' }}>
+              PROJECT CASE STUDY
+            </div>
           </div>
         </div>
       </div>

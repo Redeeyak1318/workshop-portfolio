@@ -14,6 +14,7 @@ export const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState('');
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [showResume, setShowResume] = useState(false);
 
   useEffect(() => {
     // Scroll detection for navbar background
@@ -71,16 +72,17 @@ export const Navigation = () => {
   };
 
   return (
+    <>
     <nav 
       className={`fixed left-0 top-0 z-[100] flex w-full items-center justify-between px-6 md:px-12 pointer-events-none transition-all duration-500 ${
         isScrolled 
           ? 'py-6 bg-[#050505]/85 backdrop-blur-md border-b border-neutral-800/50 shadow-sm shadow-black/20' 
-          : 'py-10 bg-transparent border-b border-transparent'
+          : 'pt-8 pb-16 bg-gradient-to-b from-[#050505]/80 via-[#050505]/20 to-transparent border-b border-transparent'
       }`}
     >
       {/* Extremely Minimal Logo */}
       <div 
-        className={`font-light text-[10px] uppercase tracking-[0.6em] pointer-events-auto cursor-pointer transition-colors duration-500 ${isScrolled ? 'text-neutral-100' : 'text-neutral-200'}`}
+        className={`font-medium text-[10px] uppercase tracking-[0.6em] pointer-events-auto cursor-pointer transition-colors duration-500 ${isScrolled ? 'text-white' : 'text-neutral-100'}`}
         onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
       >
         R.
@@ -88,7 +90,7 @@ export const Navigation = () => {
 
       <div className="hidden lg:flex items-center gap-16 pointer-events-auto">
         {/* Nav Links */}
-        <ul className="flex items-center gap-16 font-light text-[9px] uppercase tracking-[0.6em] text-neutral-500">
+        <ul className="flex items-center gap-16 font-medium text-[9px] uppercase tracking-[0.6em] text-neutral-300">
           {NAV_ITEMS.map((item) => {
             const isActive = activeSection === item.href.substring(1);
             return (
@@ -98,8 +100,8 @@ export const Navigation = () => {
                   onClick={(e) => handleNavClick(e, item.href)}
                   className={`group relative py-2 transition-all duration-300 ${
                     isActive 
-                      ? 'opacity-100 text-neutral-100' 
-                      : 'opacity-70 hover:opacity-100 hover:text-neutral-200'
+                      ? 'opacity-100 text-white' 
+                      : 'opacity-80 hover:opacity-100 hover:text-white'
                   }`}
                 >
                   {item.label}
@@ -114,10 +116,13 @@ export const Navigation = () => {
           })}
         </ul>
         
-        {/* Metadata Label */}
-        <div className="font-mono text-[8px] tracking-[0.4em] text-neutral-600 pointer-events-none transition-all duration-500">
-          {isScrolled ? 'DOCUMENT SCROLL' : 'CURRENT FILE'}
-        </div>
+        {/* Resume Button */}
+        <button 
+          onClick={() => setShowResume(true)}
+          className="font-mono font-medium text-[8px] tracking-[0.4em] text-neutral-300 hover:text-white pointer-events-auto transition-colors duration-300 uppercase"
+        >
+          Resume
+        </button>
       </div>
 
       {/* Mobile/Tablet Menu Toggle */}
@@ -154,5 +159,27 @@ export const Navigation = () => {
         })}
       </div>
     </nav>
+
+    {/* Resume Overlay */}
+    {showResume && (
+      <div className="fixed inset-0 z-[200] flex flex-col bg-[#050505]/95 backdrop-blur-md pointer-events-auto transition-all duration-500">
+        <div className="flex items-center justify-end p-6 md:p-10">
+          <button 
+            onClick={() => setShowResume(false)}
+            className="font-light text-[10px] uppercase tracking-[0.6em] text-neutral-400 hover:text-neutral-100 transition-colors"
+          >
+            CLOSE
+          </button>
+        </div>
+        <div className="flex-1 w-full max-w-5xl mx-auto pb-10 px-4 md:px-10">
+          <iframe 
+            src="/resume.pdf" 
+            className="w-full h-full border border-neutral-800/50 rounded-sm bg-white"
+            title="Resume"
+          />
+        </div>
+      </div>
+    )}
+    </>
   );
 };

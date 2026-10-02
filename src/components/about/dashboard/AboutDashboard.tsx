@@ -12,24 +12,46 @@ export const AboutDashboard = () => {
       {/* Grid Layout */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-4 lg:gap-6 w-full">
         
-        {/* MODULE A: SYSTEM PROFILE (Large Typography) */}
-        <div className="col-span-1 md:col-span-2 lg:col-span-8">
-          <BaseModule variant="solid" padding="xl" className="h-full flex flex-col justify-between">
+        {/* MODULE A: SYSTEM PROFILE (Physical Paper) */}
+        <div className="col-span-1 md:col-span-2 lg:col-span-8 relative min-h-[400px]">
+          
+          {/* LAYER 2: Minimal Architectural Paper Base */}
+          <div 
+            className="absolute inset-0 z-0 pointer-events-none bg-[#0a0a0c] border border-white/[0.02] shadow-[0_10px_40px_rgba(0,0,0,0.6)]"
+            style={{ 
+              transform: 'translateZ(0)', // Hardware acceleration
+              // Extremely subtle noise and gentle physical gradient to suggest dark archival paper
+              backgroundImage: `
+                linear-gradient(135deg, rgba(255,255,255,0.015) 0%, rgba(255,255,255,0) 30%, rgba(0,0,0,0.4) 100%),
+                url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.025'/%3E%3C/svg%3E")
+              `,
+              backgroundSize: '100% 100%, 150px 150px',
+            }}
+          ></div>
+
+          {/* LAYER 3: Existing Typography & Content (Safely isolated at z-10) */}
+          <div className="relative z-10 h-full flex flex-col justify-between p-10 md:p-14 lg:p-16">
             <div className="flex items-center gap-4 mb-16">
               <div className="h-[1px] w-8 bg-neutral-600 md:w-16"></div>
-              <span className="font-mono text-[9px] tracking-[0.4em] text-neutral-500 uppercase">
+              <span className="font-mono text-[9px] tracking-[0.4em] text-neutral-400 uppercase">
                 System Overview
               </span>
             </div>
+            
             <h2 className="text-[clamp(3rem,10vw,6.5rem)] font-thin uppercase leading-[0.85] tracking-widest text-neutral-100">
-              <div className="overflow-hidden mb-2"><span className="block">SYSTEM</span></div>
-              <div className="overflow-hidden"><span className="block text-neutral-400">PROFILE</span></div>
+              <div className="overflow-hidden mb-2">
+                <span className="block drop-shadow-lg">SYSTEM</span>
+              </div>
+              <div className="overflow-hidden">
+                <span className="block text-neutral-400 drop-shadow-lg">PROFILE</span>
+              </div>
             </h2>
-            <div className="mt-12 flex items-center justify-between border-t border-neutral-900 pt-6 opacity-50">
-              <span className="font-mono text-[9px] tracking-[0.4em] text-neutral-500 uppercase">ARCHIVE_SYS</span>
-              <span className="font-mono text-[9px] tracking-[0.4em] text-neutral-500 uppercase">VER_4.6</span>
+            
+            <div className="mt-12 flex items-center justify-between border-t border-neutral-700/40 pt-6 opacity-70">
+              <span className="font-mono text-[9px] tracking-[0.4em] text-neutral-400 uppercase">ARCHIVE_SYS</span>
+              <span className="font-mono text-[9px] tracking-[0.4em] text-neutral-400 uppercase">VER_4.6</span>
             </div>
-          </BaseModule>
+          </div>
         </div>
 
         {/* MODULE B: FORMAL PORTRAIT */}

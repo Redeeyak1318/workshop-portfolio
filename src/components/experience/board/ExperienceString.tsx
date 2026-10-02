@@ -12,16 +12,7 @@ export const ExperienceString = () => {
           </filter>
         </defs>
         <path 
-          d="
-            M 22 17
-            Q 14 32, 16 45
-            Q 16 64, 26 73
-            Q 42 86, 55 77
-            Q 70 82, 80 69
-            Q 88 61, 84 49
-            Q 86 32, 78 19
-            Q 50 12, 22 17
-          " 
+          d="M 22 17 Q 14 32, 16 45 Q 16 64, 26 73 Q 42 86, 55 77 Q 70 82, 80 69 Q 88 61, 84 49 Q 86 32, 78 19 Q 50 12, 22 17"
           fill="none" 
           stroke="#b91c1c" 
           strokeWidth="1.5" 

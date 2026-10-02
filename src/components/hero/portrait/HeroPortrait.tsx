@@ -1,4 +1,5 @@
 import { RefObject, MutableRefObject } from 'react';
+import { HeroDate } from '../date/HeroDate';
 
 export interface HeroPortraitProps {
   portraitOuterRef: RefObject<HTMLDivElement | null>;
@@ -57,12 +58,9 @@ export const HeroPortrait = ({ portraitOuterRef, portraitInnerRef, portraitMarkR
         </div>
       </div>
       
-      {/* Caption */}
-      <div className="absolute -bottom-12 right-0 flex flex-col items-end gap-2">
-        <span ref={setMetadataRef} className="text-[9px] font-light uppercase tracking-[0.5em] text-neutral-500">
-          Portrait
-        </span>
-        <span ref={setMetadataRef} className="font-mono text-[8px] tracking-widest text-neutral-700">TOKYO . VOL 01</span>
+      {/* Dynamic Date Widget (Replacing old Portrait caption) */}
+      <div className="absolute -bottom-6 right-0 z-30">
+        <HeroDate />
       </div>
       
       {/* Vertical Japanese Label */}

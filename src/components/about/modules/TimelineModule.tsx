@@ -17,16 +17,7 @@ export const TimelineModule = () => {
           <div 
             key={idx} 
             tabIndex={0}
-            className="
-              relative z-10 flex flex-col p-6 bg-[#030303] 
-              transition-all duration-[600ms] ease-[cubic-bezier(0.19,1,0.22,1)]
-              cursor-default outline-none
-              lg:group-hover/timeline:scale-[0.96] lg:group-hover/timeline:opacity-40 lg:group-hover/timeline:bg-[#020202] lg:group-hover/timeline:z-0
-              lg:hover:!scale-[1.05] lg:hover:!opacity-100 lg:hover:!bg-[#0a0a0a] lg:hover:!z-30 
-              lg:hover:!shadow-[inset_0_0_0_1px_rgba(255,255,255,0.08),0_20px_40px_rgba(0,0,0,0.8)]
-              focus-visible:!scale-[1.05] focus-visible:!opacity-100 focus-visible:!bg-[#0a0a0a] focus-visible:!z-30 
-              focus-visible:!shadow-[inset_0_0_0_1px_rgba(255,255,255,0.08),0_20px_40px_rgba(0,0,0,0.8)]
-            "
+            className="relative z-10 flex flex-col p-6 bg-[#030303] transition-all duration-[600ms] ease-[cubic-bezier(0.19,1,0.22,1)] cursor-default outline-none lg:group-hover/timeline:scale-[0.96] lg:group-hover/timeline:opacity-40 lg:group-hover/timeline:bg-[#020202] lg:group-hover/timeline:z-0 lg:hover:!scale-[1.05] lg:hover:!opacity-100 lg:hover:!bg-[#0a0a0a] lg:hover:!z-30 lg:hover:!shadow-[inset_0_0_0_1px_rgba(255,255,255,0.08),0_20px_40px_rgba(0,0,0,0.8)] focus-visible:!scale-[1.05] focus-visible:!opacity-100 focus-visible:!bg-[#0a0a0a] focus-visible:!z-30 focus-visible:!shadow-[inset_0_0_0_1px_rgba(255,255,255,0.08),0_20px_40px_rgba(0,0,0,0.8)]"
           >
             <div className="flex justify-between items-start mb-12">
               <span className="font-mono text-[10px] text-neutral-500 transition-colors duration-[600ms] lg:group-hover/timeline:text-neutral-700 lg:hover:!text-neutral-300">
